@@ -1,0 +1,70 @@
+Definition and Usage
+
+reduce()
+
+-> executes a reducer function for array element.
+
+-> returns a single value: the function's accumulated result.
+
+-> does not execute the function for empty array elements.
+
+-> does not change the original array.
+
+Syntax
+array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
+
+Most of the modern array methods return a new array. 
+The Array.reduce() method is a bit more flexible. 
+It can return anything. 
+Its purpose is to take an array and condense its 
+content into a single value.
+That value can be a number, a string, 
+or even an object or new array. 
+
+The Array.reduce() accepts two arguments: 
+a callback method to run against each item in the array, 
+and a starting value.
+
+The callback also accepts two arguments: 
+the accumulator, which is the current combined value, 
+and the current item in the loop. 
+Whatever you return is used as the accumulator for 
+the next item in the loop. 
+On the very first loop, that starting value is used instead.
+
+References:
+
+https://stackoverflow.com/questions/35431292/using-the-reduce-function-to-return-an-array#35431710
+https://24ways.org/2019/five-interesting-ways-to-use-array-reduce/
+https://stackoverflow.com/questions/61720111/create-new-array-from-another-array-using-reduce-in-javascript
+https://en.wikipedia.org/wiki/Functional_programming
+https://www.youtube.com/watch?v=EeZBKv34mm4
+
+-----------------------------------------
+
+Reduce example:
+
+var mydata = [
+    {"endTime": "123",
+    "startTime": "2323",
+    "lob" : ["a", "b", "c"]
+    },
+    {
+    "endTime": "454",
+    "startTime": "3232",
+    "lob" : ["a", "b"]
+    },
+    {
+    "endTime": "4545",
+    "startTime": "2322",
+    "lob" : ["c"]
+    }
+  ];
+  
+  var newdata = mydata.reduce((acc, curr) => {
+    curr.lob.forEach(el => {
+      acc.push({ item: el, timeRange: [curr.endTime, curr.startTime] });
+    });
+    return acc;
+  }, []);
+  console.log(newdata);
