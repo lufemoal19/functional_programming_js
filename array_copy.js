@@ -11,6 +11,9 @@ let copy1 = [...array]
 let array_copy0 = my_array => my_array.reduce((current, value) => current.concat(value), [])
 let array_copy1 = my_array => my_array.reduce((current, value) => [...current, value], [])
 
+// REST: condence multiple elements into an array
+const multiply = (multiplier, ...args) => args.map(element => multiplier * element)
+
 let copy0_test = array_copy0(array);
 let copy1_test = array_copy1(array);
 
@@ -32,3 +35,5 @@ console.log('Other copies')
 console.log('------------------------------------')
 console.log(`Copy 0: ${copy0}`)
 console.log(`Copy 1: ${copy1}`)
+console.log(`Copy 2: ${multiply(2,array)}`)
+
